@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sai Chaitanya Nakka | Portfolio</title>
+  <meta name="description" content="Portfolio of Sai Chaitanya Nakka, Business Analytics & IT student at Rutgers Business School.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #1f3a68;
+      --navy-dark: #142849;
+      --accent: #3b82c4;
+      --bg: #f7f8fb;
+      --card: #ffffff;
+      --text: #1d2433;
+      --muted: #5b6475;
+      --border: #e3e7ef;
+      --chip: #eaf1fa;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Inter", system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a { color: var(--accent); }
+
+    /* Navigation */
+    nav {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 960px; margin: 0 auto; padding: 14px 20px;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;
+    }
+    .logo { font-weight: 700; color: var(--navy); text-decoration: none; font-size: 1.1rem; }
+    .nav-links { display: flex; gap: 20px; list-style: none; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-weight: 500; font-size: 0.95rem; }
+    .nav-links a:hover { color: var(--navy); }
+
+    /* Hero */
+    header.hero {
+      background: linear-gradient(135deg, var(--navy-dark), var(--navy));
+      color: #fff; padding: 90px 20px 80px; text-align: center;
+    }
+    .hero h1 { font-size: 2.6rem; font-weight: 700; margin-bottom: 6px; }
+    .hero .role { font-size: 1.05rem; opacity: 0.85; margin-bottom: 28px; }
+    .statement {
+      max-width: 720px; margin: 0 auto 32px; font-size: 1.25rem; line-height: 1.55; font-weight: 500;
+    }
+    .btn {
+      display: inline-block; padding: 11px 22px; border-radius: 8px; text-decoration: none;
+      font-weight: 600; margin: 4px 6px; transition: transform .15s, background .15s;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: #fff; color: var(--navy); }
+    .btn-outline { border: 2px solid rgba(255,255,255,0.7); color: #fff; }
+
+    .stats {
+      max-width: 960px; margin: -36px auto 0; padding: 0 20px;
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px;
+    }
+    .stat {
+      background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+      padding: 18px; text-align: center; box-shadow: 0 4px 14px rgba(20,40,73,0.06);
+    }
+    .stat strong { display: block; font-size: 1.5rem; color: var(--navy); }
+    .stat span { font-size: 0.85rem; color: var(--muted); }
+
+    /* Sections */
+    section { max-width: 960px; margin: 0 auto; padding: 70px 20px 10px; }
+    section h2 {
+      font-size: 1.7rem; color: var(--navy); margin-bottom: 8px;
+    }
+    .section-sub { color: var(--muted); margin-bottom: 28px; }
+
+    /* Skills */
+    .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .skill-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 22px;
+    }
+    .skill-card h3 { font-size: 1.05rem; margin-bottom: 14px; color: var(--navy-dark); }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chip {
+      background: var(--chip); color: var(--navy); padding: 5px 12px; border-radius: 999px;
+      font-size: 0.85rem; font-weight: 500;
+    }
+
+    /* Projects */
+    .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .project {
+      background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 24px;
+      display: flex; flex-direction: column; transition: box-shadow .2s, transform .2s;
+    }
+    .project:hover { box-shadow: 0 8px 24px rgba(20,40,73,0.10); transform: translateY(-3px); }
+    .project .tag { font-size: 0.75rem; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: .05em; }
+    .project h3 { font-size: 1.1rem; margin: 6px 0 10px; color: var(--navy-dark); }
+    .project p { color: var(--muted); font-size: 0.93rem; flex-grow: 1; }
+    .project ul { margin: 12px 0 16px 18px; color: var(--muted); font-size: 0.88rem; }
+    .project .tools { font-size: 0.82rem; color: var(--text); margin-bottom: 14px; }
+    .project .links a {
+      font-weight: 600; font-size: 0.9rem; text-decoration: none; margin-right: 14px;
+    }
+    .project .links a:hover { text-decoration: underline; }
+
+    /* Contact */
+    .contact {
+      background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+      padding: 32px; text-align: center;
+    }
+    .contact p { color: var(--muted); margin-bottom: 18px; }
+    .contact .btn-primary { background: var(--navy); color: #fff; }
+    .contact .btn-outline { border-color: var(--navy); color: var(--navy); }
+
+    footer { text-align: center; color: var(--muted); font-size: 0.85rem; padding: 50px 20px 30px; }
+
+    @media (max-width: 800px) {
+      .skills-grid, .projects-grid { grid-template-columns: 1fr; }
+      .stats { grid-template-columns: repeat(2, 1fr); }
+      .hero h1 { font-size: 2rem; }
+      .statement { font-size: 1.1rem; }
+      .nav-links { gap: 14px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="#top" class="logo">Sai Nakka</a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Personal Statement -->
+  <header class="hero" id="top">
+    <h1>Sai Chaitanya Nakka</h1>
+    <p class="role">Business Analytics &amp; IT Student · Rutgers Business School · Class of 2028</p>
+    <p class="statement" id="about">
+      I'm a Business Analytics and IT student at Rutgers who turns data into clear decisions, using Excel, SQL, Python, and Power BI to tighten financial controls, keep operations running smoothly, and help teams make smarter calls.
+    </p>
+    <a href="#projects" class="btn btn-primary">View My Projects</a>
+    <a href="#contact" class="btn btn-outline">Get in Touch</a>
+  </header>
+
+  <div class="stats">
+    <div class="stat"><strong>$8,000</strong><span>Semester budget managed</span></div>
+    <div class="stat"><strong>0</strong><span>Reconciliation discrepancies</span></div>
+    <div class="stat"><strong>400+</strong><span>Daily transactions overseen</span></div>
+    <div class="stat"><strong>3.6</strong><span>GPA at Rutgers</span></div>
+  </div>
+
+  <!-- Skills -->
+  <section id="skills">
+    <h2>Skills</h2>
+    <p class="section-sub">What I bring to an analytics, finance, or operations team.</p>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <h3>Technical Tools</h3>
+        <div class="chips">
+          <span class="chip">Excel</span>
+          <span class="chip">SQL</span>
+          <span class="chip">Python</span>
+          <span class="chip">Power BI</span>
+          <span class="chip">HTML / CSS / JavaScript</span>
+          <span class="chip">Microsoft 365</span>
+          <span class="chip">Copilot</span>
+          <span class="chip">Git &amp; GitHub</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>Analytics &amp; Finance</h3>
+        <div class="chips">
+          <span class="chip">Data Analysis</span>
+          <span class="chip">Budget Modeling</span>
+          <span class="chip">Reconciliation</span>
+          <span class="chip">Financial Reporting</span>
+          <span class="chip">KPI Reporting</span>
+          <span class="chip">Internal Controls</span>
+          <span class="chip">Inventory Tracking</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>Leadership &amp; Professional</h3>
+        <div class="chips">
+          <span class="chip">Team Leadership</span>
+          <span class="chip">Cross-Functional Collaboration</span>
+          <span class="chip">Process Improvement</span>
+          <span class="chip">Attention to Detail</span>
+          <span class="chip">Client Communication</span>
+          <span class="chip">Problem Solving</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects">
+    <h2>Projects</h2>
+    <p class="section-sub">Real problems I've worked on, in school, in leadership roles, and on the job.</p>
+    <div class="projects-grid">
+
+      <article class="project">
+        <span class="tag">Finance · Excel</span>
+        <h3>Dance Team Budget &amp; Reconciliation Model</h3>
+        <p>As treasurer of the Rutgers Raas &amp; Garba competitive dance team, I built a budget model to plan and track spending across a full competition season.</p>
+        <ul>
+          <li>Managed an $8,000 semester budget with zero discrepancies</li>
+          <li>Won unanimous board approval for funding across 4 competitions</li>
+        </ul>
+        <p class="tools"><strong>Tools:</strong> Excel, financial modeling, reconciliation</p>
+        <div class="links">
+          <a href="https://github.com/sainakka2005-cyber/sainakka2005#dance-team-budget--reconciliation-model" target="_blank" rel="noopener">Project Details →</a>
+        </div>
+      </article>
+
+      <article class="project">
+        <span class="tag">Operations · SQL &amp; Python</span>
+        <h3>Inventory Restocking Analysis</h3>
+        <p>Analyzed daily product usage and inventory turnover to decide which high-demand items to restock first, cutting stockouts in a high-volume retail setting.</p>
+        <ul>
+          <li>Queried sales and stock data with SQL</li>
+          <li>Ranked restocking priorities with a Python script</li>
+        </ul>
+        <p class="tools"><strong>Tools:</strong> SQL, Python, Excel</p>
+        <div class="links">
+          <a href="https://github.com/sainakka2005-cyber/sainakka2005#inventory-restocking-analysis" target="_blank" rel="noopener">Project Details →</a>
+        </div>
+      </article>
+
+      <article class="project">
+        <span class="tag">Web Development</span>
+        <h3>Personal Portfolio Website</h3>
+        <p>This site. Built from scratch with HTML, CSS, and JavaScript, designed to work on phones and desktops, and published through GitHub Pages.</p>
+        <ul>
+          <li>Responsive layout with CSS Grid</li>
+          <li>Version-controlled and deployed with GitHub</li>
+        </ul>
+        <p class="tools"><strong>Tools:</strong> HTML, CSS, JavaScript, GitHub Pages</p>
+        <div class="links">
+          <a href="https://github.com/sainakka2005-cyber/sainakka2005" target="_blank" rel="noopener">View Code →</a>
+          <a href="https://sainakka2005-cyber.github.io/sainakka2005/" target="_blank" rel="noopener">Live Site →</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="contact">
+      <h2>Let's Connect</h2>
+      <p>I'm looking for analytics, finance, and operations internships. I'd love to hear from you.</p>
+      <a href="mailto:Sainakka2005@gmail.com" class="btn btn-primary">Email Me</a>
+      <a href="https://github.com/sainakka2005-cyber" target="_blank" rel="noopener" class="btn btn-outline">GitHub</a>
+    </div>
+  </section>
+
+  <footer>
+    © <span id="year">2026</span> Sai Chaitanya Nakka · New Brunswick, NJ
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
